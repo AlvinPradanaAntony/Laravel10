@@ -1,0 +1,105 @@
+<template>
+    <layout>
+
+        <div class="mt-8">
+            <div class="flex justify-between">
+                <h2 class="text-3xl text-gray-700 font-bold">المستخدمين</h2>
+                <div>
+                    <inertia-link href="/dashboard/users/create"
+                                  class="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-medium rounded">
+                        أنشاء مستخدم
+                    </inertia-link>
+                </div>
+            </div>
+            <div class="mt-4">
+                <div class="flex flex-col">
+                    <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6">
+                        <div
+                            class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+                            <table class="min-w-full">
+                                <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-right text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                                        style="text-align: start">
+                                        الأسم الكامل
+                                    </th>
+                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                                        style="text-align: start">
+                                        أسم المستخدم
+                                    </th>
+                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                                        style="text-align: start">
+                                        الصلاحية
+                                    </th>
+                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                                        style="text-align: start">
+                                        رقم الهاتف
+                                    </th>
+                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                                        style="text-align: start">
+                                         رقم الهاتف الأضافي
+                                    </th>
+                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                                        style="text-align: start">
+                                         العنوان
+                                    </th>
+                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                                        style="text-align: start">
+                                         الرصيد
+                                    </th>
+                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+                                </tr>
+                                </thead>
+                                <tbody class="bg-white text-gray-700">
+                                <tr v-for="user in users.data" :key="user.id">
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                        {{ user.name }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                        {{ user.username }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
+                                        {{ user.permission }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                        {{ user.phone }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                        {{ user.alt_phone }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                        {{ user.address }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                        {{ user.balance }}
+                                    </td>
+
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium">
+                                        <inertia-link :href="`/dashboard/users/${user.id}/edit`" class="text-indigo-600 hover:text-indigo-900">تعديل</inertia-link>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <pagination :links="users.links" class="mt-5"></pagination>
+        </div>
+
+    </layout>
+</template>
+
+<script>
+    import Layout from "../../../Shared/Layout";
+    import Pagination from "../../../Shared/Pagination";
+
+    export default {
+        components: {
+            Layout,
+            Pagination,
+        },
+        props: ['users'],
+
+    }
+</script>

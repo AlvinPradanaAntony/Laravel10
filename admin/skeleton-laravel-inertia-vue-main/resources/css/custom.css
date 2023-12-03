@@ -1,0 +1,22 @@
+label {
+  @apply block mb-1;
+}
+input[type="checkbox"] {
+  @apply rounded-[0.25rem] m-0;
+}
+
+.c-input {
+  @apply block py-1 rounded w-full text-gray-500 border-gray-300 focus:border-blue-300 focus:ring-blue-300
+}
+
+.c-btn {
+  @apply rounded-md py-1 px-4
+}
+
+.c-btn-sm {
+  @apply rounded-md px-2 py-1 text-sm mr-1
+}
+
+.c-primary {
+  @apply bg-primary text-white;
+}
